@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import {createPet} from '../../store/actions/petActions'
 export class CreatePet extends Component {
     state = {
         name: ' ', 
@@ -15,7 +16,7 @@ export class CreatePet extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.createPet(this.state)
     }
     render() {
         return (
@@ -52,4 +53,10 @@ export class CreatePet extends Component {
     }
 }
 
-export default CreatePet
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createPet: (pet) => dispatch(createPet(pet))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreatePet)

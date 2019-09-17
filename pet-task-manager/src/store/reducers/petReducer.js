@@ -7,7 +7,11 @@ const initState = {
 }
 
 const projectReducer = (state = initState, action) => {
+    switch(action.type){
+        case 'CREATE_PET': 
+        console.log('created pet', action.pet)
+    }
     return state
 }
 
-export default projectReducer
+export default petReducer
