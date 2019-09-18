@@ -4,11 +4,12 @@ import PetList from '../pets/PetList'
 import { connect } from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux'
+import {Redirect} from 'react-router-dom'
 
 class Dashboard extends Component {
     render() {
-        const { pets} = this.props;
-
+        const { pets, auth} = this.props;
+        if(!auth.uid) return <Redirect to='/signin' />
         return (
             <div className="dashboard container">
                 <div className="row">
@@ -29,7 +30,8 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     //console.log(state);
     return {
-        pets: state.firestore.ordered.pets
+        pets: state.firestore.ordered.pets,
+        auth: state.firebase.auth
     }
 }
 export default compose(

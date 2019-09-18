@@ -2,10 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { firestoreConnect} from 'react-redux-firebase'
 import {compose } from 'redux'
-
-
+import {Redirect} from 'react-router-dom'
+import moment from 'moment'
 const PetDetails = (props) => {
-    const {pet} = props;
+    const {pet, auth} = props;
+    
+    if(!auth.uid) return <Redirect to='/signin' />
     if(pet) {
         return (
         <div className = "container section project-details">
@@ -19,7 +21,7 @@ const PetDetails = (props) => {
                 </div>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>Owned By: {pet.ownerFirstName} {pet.ownerLastName}</div>
-                    <div> Added:  September</div>
+                    <div> {moment(pet.createdAt.toDate()).calendar()}</div>
                 </div>
             </div>
         </div>
@@ -38,7 +40,8 @@ const mapStateToProps = (state, ownProps) => {
     const pets = state.firestore.data.pets
     const pet = pets ? pets[id] : null
     return {
-        pet: pet
+        pet: pet,
+        auth: state.firebase.auth
     }
 }
 
