@@ -2,11 +2,11 @@
 
 
 ## REMAINING TASKS
--integrate a to-do list functionality in a selected pet 
--ability to edit notes kept after a pet is created 
--allow for pets created by a single user to only be visible by that user 
--integration of cloud functions (provided by Google Firebase Services) to provide a notification window which will display user-activity for a given account
--deploying to firebase hosting 
+-->integrate a to-do list functionality in a selected pet 
+-->ability to edit notes kept after a pet is created 
+-->allow for pets created by a single user to only be visible by that user 
+-->integration of cloud functions (provided by Google Firebase Services) to provide a notification window which will display user-activity for a given account
+-->deploying to firebase hosting 
 
 
 DESIGN ADAPTED FROM THE REDUX-REACT-FIREBASE APP DESIGN TEMPLATE PROVIDED BY THE NET NINJA TUTORIAL YOUTUBE SERIES
